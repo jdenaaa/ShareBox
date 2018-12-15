@@ -19,7 +19,6 @@ import com.ecjtu.sharebox.ui.activity.MainActivity
 import com.ecjtu.sharebox.ui.dialog.FilePickDialog
 import com.google.android.gms.ads.MobileAds
 import com.tencent.bugly.crashreport.CrashReport
-import org.ecjtu.channellibrary.wifidirect.WifiDirectManager
 import org.ecjtu.easyserver.server.DeviceInfo
 import java.io.*
 import java.lang.ref.WeakReference
@@ -32,11 +31,15 @@ import kotlin.collections.ArrayList
  * Created by KerriGan on 2017/6/9 0009.
  */
 class MainApplication : MultiDexApplication() {
+
+    companion object {
+        @JvmStatic
+        private val FILE_CATEGORIES = arrayOf("Movie", "Music", "Photo", "Doc", "Apk", "Rar")
+    }
+
     private val mSavedInstance = HashMap<String, Any>()
 
     private val mActivityList = ArrayList<WeakReference<Activity?>>()
-
-    private val FILE_CATEGORIES = arrayOf("Movie", "Music", "Photo", "Doc", "Apk", "Rar")
 
     override fun onCreate() {
         super.onCreate()
